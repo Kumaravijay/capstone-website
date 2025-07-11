@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuto Insurance - Smart Vehicle Insurance with AI-Powered Pricing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <h2 class="logo__text">SecureAuto</h2>
+                </div>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li><a href="#home" class="nav__link">Home</a></li>
+                        <li><a href="#about" class="nav__link">About</a></li>
+                        <li><a href="#services" class="nav__link">Services</a></li>
+                        <li><a href="#claims" class="nav__link">Claims</a></li>
+                        <li><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="btn btn--primary" id="getQuoteBtn">Get Quote</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">Smart Vehicle Insurance with AI-Powered Pricing</h1>
+                <p class="hero__subtitle">Get personalized insurance quotes in minutes using our advanced machine learning algorithms that analyze 200+ factors for the most accurate pricing.</p>
+                <button class="btn btn--primary btn--lg" id="heroQuoteBtn">Get Instant Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section__title">Our Insurance Services</h2>
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🛡️</div>
+                    <h3 class="service-card__title">Comprehensive Coverage</h3>
+                    <p class="service-card__description">Complete protection for your vehicle including theft, vandalism, and natural disasters</p>
+                    <ul class="service-card__features">
+                        <li>Theft Protection</li>
+                        <li>Accident Coverage</li>
+                        <li>Natural Disaster Protection</li>
+                        <li>Vandalism Coverage</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">👥</div>
+                    <h3 class="service-card__title">Third-Party Insurance</h3>
+                    <p class="service-card__description">Essential coverage for damages to other vehicles and property</p>
+                    <ul class="service-card__features">
+                        <li>Legal Liability</li>
+                        <li>Property Damage</li>
+                        <li>Bodily Injury</li>
+                        <li>Legal Defense</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🚛</div>
+                    <h3 class="service-card__title">Commercial Vehicle</h3>
+                    <p class="service-card__description">Specialized coverage for business and commercial vehicles</p>
+                    <ul class="service-card__features">
+                        <li>Fleet Management</li>
+                        <li>Business Interruption</li>
+                        <li>Cargo Protection</li>
+                        <li>Driver Coverage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ML Quote Calculator -->
+    <section id="quote-calculator" class="quote-calculator">
+        <div class="container">
+            <h2 class="section__title">AI-Powered Premium Calculator</h2>
+            <div class="calculator">
+                <div class="calculator__steps">
+                    <div class="step active" data-step="1">Vehicle Info</div>
+                    <div class="step" data-step="2">Driver Details</div>
+                    <div class="step" data-step="3">Coverage</div>
+                    <div class="step" data-step="4">Results</div>
+                </div>
+                
+                <form class="calculator__form" id="quoteForm">
+                    <!-- Step 1: Vehicle Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Vehicle Information</h3>
+                        <div class="form-group">
+                            <label class="form-label">Vehicle Make</label>
+                            <select class="form-control" id="vehicleMake" required>
+                                <option value="">Select Make</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="honda">Honda</option>
+                                <option value="ford">Ford</option>
+                                <option value="bmw">BMW</option>
+                                <option value="audi">Audi</option>
+                                <option value="mercedes">Mercedes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Vehicle Model</label>
+                            <input type="text" class="form-control" id="vehicleModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Year</label>
+                            <select class="form-control" id="vehicleYear" required>
+                                <option value="">Select Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Vehicle Value ($)</label>
+                            <input type="number" class="form-control" id="vehicleValue" required>
+                        </div>
+                        <button type="button" class="btn btn--primary next-step">Next</button>
+                    </div>
+
+                    <!-- Step 2: Driver Information -->
+                    <div class="form-step" data-step="2">
+                        <h3>Driver Information</h3>
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="driverAge" min="18" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Years of Driving Experience</label>
+                            <input type="number" class="form-control" id="drivingExperience" min="0" max="50" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Location</label>
+                            <select class="form-control" id="location" required>
+                                <option value="">Select Location</option>
+                                <option value="urban">Urban</option>
+                                <option value="suburban">Suburban</option>
+                                <option value="rural">Rural</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Annual Mileage</label>
+                            <select class="form-control" id="annualMileage" required>
+                                <option value="">Select Mileage</option>
+                                <option value="low">Under 5,000 miles</option>
+                                <option value="medium">5,000 - 15,000 miles</option>
+                                <option value="high">Over 15,000 miles</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary prev-step">Previous</button>
+                            <button type="button" class="btn btn--primary next-step">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Coverage Preferences -->
+                    <div class="form-step" data-step="3">
+                        <h3>Coverage Preferences</h3>
+                        <div class="form-group">
+                            <label class="form-label">Coverage Type</label>
+                            <select class="form-control" id="coverageType" required>
+                                <option value="">Select Coverage</option>
+                                <option value="comprehensive">Comprehensive</option>
+                                <option value="third-party">Third-Party</option>
+                                <option value="commercial">Commercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Deductible</label>
+                            <select class="form-control" id="deductible" required>
+                                <option value="">Select Deductible</option>
+                                <option value="250">$250</option>
+                                <option value="500">$500</option>
+                                <option value="1000">$1,000</option>
+                                <option value="2000">$2,000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Previous Claims</label>
+                            <select class="form-control" id="previousClaims" required>
+                                <option value="">Select Claims History</option>
+                                <option value="0">No claims</option>
+                                <option value="1">1 claim in last 3 years</option>
+                                <option value="2">2+ claims in last 3 years</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary prev-step">Previous</button>
+                            <button type="button" class="btn btn--primary calculate-quote">Calculate Premium</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Results -->
+                    <div class="form-step" data-step="4">
+                        <h3>Your Premium Quote</h3>
+                        <div class="quote-results" id="quoteResults">
+                            <div class="quote-summary">
+                                <div class="quote-price">
+                                    <span class="price-label">Monthly Premium</span>
+                                    <span class="price-amount" id="monthlyPremium">$0</span>
+                                </div>
+                                <div class="quote-price">
+                                    <span class="price-label">Annual Premium</span>
+                                    <span class="price-amount" id="annualPremium">$0</span>
+                                </div>
+                            </div>
+                            <div class="risk-assessment" id="riskAssessment">
+                                <h4>Risk Assessment</h4>
+                                <div class="risk-factors"></div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary prev-step">Previous</button>
+                            <button type="button" class="btn btn--primary">Buy Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="why-choose-us">
+        <div class="container">
+            <h2 class="section__title">Why Choose SecureAuto?</h2>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon">🧠</div>
+                    <h3 class="feature-card__title">AI-Powered Pricing</h3>
+                    <p class="feature-card__description">Our machine learning algorithms analyze 200+ factors to give you the most accurate premium</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">🕐</div>
+                    <h3 class="feature-card__title">24/7 Support</h3>
+                    <p class="feature-card__description">Round-the-clock customer service and claims processing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">⚡</div>
+                    <h3 class="feature-card__title">Quick Claims</h3>
+                    <p class="feature-card__description">Digital claims processing with average approval time of 2 hours</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">❤️</div>
+                    <h3 class="feature-card__title">98% Satisfaction</h3>
+                    <p class="feature-card__description">Industry-leading customer satisfaction rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section__title">What Our Customers Say</h2>
+            <div class="testimonials__grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__rating">
+                        <span class="stars">★★★★★</span>
+                    </div>
+                    <p class="testimonial-card__comment">"The AI-powered pricing saved me 30% on my premium. Quick and accurate!"</p>
+                    <div class="testimonial-card__author">
+                        <strong>Sarah Johnson</strong>
+                        <span>California</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__rating">
+                        <span class="stars">★★★★★</span>
+                    </div>
+                    <p class="testimonial-card__comment">"Claims process was seamless. Filed online and got approval within 24 hours."</p>
+                    <div class="testimonial-card__author">
+                        <strong>Michael Chen</strong>
+                        <span>Texas</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__rating">
+                        <span class="stars">★★★★★</span>
+                    </div>
+                    <p class="testimonial-card__comment">"Best customer service in the industry. Highly recommend SecureAuto!"</p>
+                    <div class="testimonial-card__author">
+                        <strong>Emma Rodriguez</strong>
+                        <span>Florida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claims Process -->
+    <section id="claims" class="claims-process">
+        <div class="container">
+            <h2 class="section__title">Simple Claims Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Report Claim</h3>
+                    <p>File your claim online or call our 24/7 hotline</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Assessment</h3>
+                    <p>Our AI system processes your claim instantly</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Approval</h3>
+                    <p>Get approval within 2 hours on average</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Settlement</h3>
+                    <p>Receive your settlement quickly and securely</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section__title">Frequently Asked Questions</h2>
+            <div class="faq__list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does AI-powered pricing work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our machine learning algorithms analyze your driving history, vehicle data, and risk factors to calculate the most accurate premium for your specific situation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What information do I need for a quote?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You'll need your vehicle details (make, model, year), driver information, desired coverage levels, and driving history.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How quickly can I get covered?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can get instant quotes and purchase coverage online immediately. Digital policy documents are available within minutes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's included in comprehensive coverage?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Comprehensive coverage includes theft, vandalism, natural disasters, fire, and other non-collision damages to your vehicle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section__title">Get in Touch</h2>
+            <div class="contact__grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <strong>Phone:</strong> +1-800-SECURE-AUTO
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong> info@secureauto.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Address:</strong> 123 Insurance Plaza, New York, NY 10001
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>SecureAuto</h3>
+                    <p>Smart Vehicle Insurance with AI-Powered Pricing</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 SecureAuto Insurance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
